@@ -1,5 +1,7 @@
 # EthereumNodePi
-Running an Ethereum full ndoe on your raspberry pi 3B+/4
+Running an Ethereum light node on your raspberry pi 3B+/4.
+
+Note that the current raspberry pi 3 is not able to run a full node:  Processing power, i/o bandwidth, and network bandwidth, mostly make it impossible to run a full node. Maybe this may have change with the raspberry pi 4 - 4 GB?
 
 ## Buying the required part
 * Raspberry Pi 3B+ — this is the latest full model, which has wifi and bluetooth built in.
