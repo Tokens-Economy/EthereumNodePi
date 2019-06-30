@@ -88,6 +88,12 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+As per geth help document there are 3 ways you can do sync to network:
+
+* `--syncmode full`: Geth client will download Block header + Block data + full Validation: Is called eth full node
+* `--syncmode fast`: Geth client will download Block header + Block data + validate for last 1k transactions.
+* `--syncmode light`: Geth client will download Current state + Asks nodes for as its need. Light node It will request missing blocks from full nodes
+
 now enable the service and start it
 ```
 sudo systemctl enable geth@pi.service
