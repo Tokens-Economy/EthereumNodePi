@@ -47,48 +47,47 @@ UUID=bb72cd58-8477-4639-8214-31d85c7b0c5b /mnt/mydisk ext4 defaults,auto,umask=0
   ```
 
 ### Install Etheruem
- ```
-sudo apt-get install software-properties-common
-sudo add-apt-repository -y ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install ethereum
- ```
 
-### Install Docker
+Get the ARM7 (Raspberry Pi 3B+) build from 
+https://geth.ethereum.org/downloads/
 
-debian buster are not avalable yet but there is a workaround:
- ```
-curl -sL get.docker.com | sed 's/9)/10)/' | sh
- ```
+  ```
+cd /mnt/ethereum-data
+wget https://gethstore.blob.core.windows.net/builds/geth-linux-arm7-1.8.27-4bcc0a37.tar.gz
+tar xvf geth-linux-arm7-1.8.27-4bcc0a37.tar.gz
+mv geth-linux-arm7-1.8.27-4bcc0a37/geth /usr/local/bin/geth
+```
+  
+First if we use geth to create a new account.
+$ geth account new
 
-due to an issue in containerd used in official package, dont install like this!
- ```
-sudo apt-get install docker.io docker-compose
- ```
- 
-Store containers in an external USB drive. Change the following line
- ```
-sudo vi /lib/systemd/system/docker.service
-ExecStart=/usr/bin/dockerd -g /mnt/ethereum-data/ /media/USBdrive/docker -H fd://
- ```
+We want ethereum to start at boot time
+```
+sudo vi /etc/systemd/system/geth@.service
+```
+and enter 
+```
+[Unit]
+Description=Ethereum daemon
+Requires=network.target
 
-Reload changes
- ```
-sudo systemctl daemon-reload
-sudo systemctl restart docker
- ```
+[Service]
+Type=simple
+User=%I
+ExecStart=/usr/local/bin/geth --syncmode light --cache 64 --maxpeers 12 -datadir=/mnt/ethereum-data/
+Restart=on-failure
 
-You can check that it worked with
- ```
-sudo docker info | grep Root
-Docker Root Dir: /media/USBdrive/docker
+[Install]
+WantedBy=multi-user.target
+```
+now enable the service and start it
+```
+sudo systemctl enable geth@pi.service
+sudo systemctl start geth@pi.service
 ```
 
 
 
-### References
- * https://www.raspberrypi.org/documentation/configuration/external-storage.md
- 
  
  
  
