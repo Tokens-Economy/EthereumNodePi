@@ -1,5 +1,5 @@
 # EthereumNodePi
-Running a full Ethereum on your raspberry pi
+Running a full Ethereum on your raspberry pi 3B+/4
 
 ## Buying the required part
 * Raspberry Pi 3B+ — this is the latest full model, which has wifi and bluetooth built in.
@@ -11,55 +11,53 @@ Running a full Ethereum on your raspberry pi
 ### Install Raspbian
 Install Raspbian https://www.raspberrypi.org/downloads/raspbian/ on your sdcard using https://www.balena.io/etcher/
 You need to connect the PI first to a HDMI screen, and keyboard
- ```
- sudo raspi-config
-  ```
+```
+sudo raspi-config
+```
 Activate Wifi, and SSH under Boot options
 
 It is a good idea to update the operating system
-
- ```
- sudo apt-get update
- sudo apt-get upgrade
- ```
-
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
 
 ### Connect USB disk
- Format to Ext4 and mount the filesystem
-  ```
- sudo mkfs.ext4 /dev/sda1
- sudo mkdir /mnt/ethereum-data
- sudo mount /dev/sda1 /mnt/ethereum-data/
-  ```
+Format to Ext4 and mount the filesystem
+ ```
+sudo mkfs.ext4 /dev/sda1
+sudo mkdir /mnt/ethereum-data
+sudo mount /dev/sda1 /mnt/ethereum-data/
+ ```
  
  Verify that the storage device is mounted successfully by listing the contents:
-   ```
- ls /mnt/ethereum-data/
-   ```
+```
+ls /mnt/ethereum-data/
+```
 ### Setting up automatic USB disk mounting
 You can modify the fstab file to define the location where the storage device will be automatically mounted when the Raspberry Pi starts up. In the fstab file, the disk partition is identified by the universally unique identifier (UUID).
  
 Get the UUID of the disk partition:
-  ```
-  sudo blkid
-  ```
+```
+sudo blkid
+```
 Find the disk partition from the list and note the UUID. For example,  bb72cd58-8477-4639-8214-31d85c7b0c5b
 
 Open the fstab file using a command line editor such as nano or vi:
-  ```
-  sudo vi /etc/fstab
-  ```
+```
+sudo vi /etc/fstab
+```
 Add the following line in the fstab file:
-  ```
+```
 UUID=bb72cd58-8477-4639-8214-31d85c7b0c5b /mnt/mydisk ext4 defaults,auto,umask=000,users,rw,nofail 0 0
-  ```
+```
 
 ### Install Etheruem
 
 Get the ARM7 (Raspberry Pi 3B+) build from 
 https://geth.ethereum.org/downloads/
 
-  ```
+```
 cd /mnt/ethereum-data
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-arm7-1.8.27-4bcc0a37.tar.gz
 tar xvf geth-linux-arm7-1.8.27-4bcc0a37.tar.gz
@@ -102,5 +100,6 @@ You can now
 ```
 get attach
 admin.peers
+eth.syncing
 ```
-to see the number of peer attached to your node
+to see the number of peer attached to your node or the status
