@@ -4,11 +4,19 @@ Running a full Ethereum on your raspberry pi
 ## Buying the required part
 * Raspberry Pi 3B+ — this is the latest full model, which has wifi and bluetooth built in.
 * An External Hard Drive— 500GB to 1TB
-* A quality case and heatsinks 
-* 32G+ microSD card — We’re storing the chain data on the hard drive, so only need enough memory to run the operating system.
+* A case and heatsinks 
+* 16GB+/32G+ microSD card — We’re storing the chain data on the hard drive, so we only need enough memory to run the operating system.
 
 ## Installation
 ### Install Raspbian
+Install Raspbian https://www.raspberrypi.org/downloads/raspbian/ on your sdcard using https://www.balena.io/etcher/
+You need to connect the PI first to a HDMI screen, and keyboard
+ ```
+ sudo raspi-config
+  ```
+Activate Wifi, and SSH under Boot options
+
+It is a good idea to update the operating system
 
  ```
  sudo apt-get update
