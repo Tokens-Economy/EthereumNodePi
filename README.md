@@ -45,6 +45,15 @@ Add the following line in the fstab file:
   ```
 UUID=bb72cd58-8477-4639-8214-31d85c7b0c5b /mnt/mydisk ext4 defaults,auto,umask=000,users,rw,nofail 0 0
   ```
+
+### Install Etheruem
+ ```
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+ ```
+
 ### Install Docker
 
 debian buster are not avalable yet but there is a workaround:
