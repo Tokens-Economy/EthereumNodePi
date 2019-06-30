@@ -17,7 +17,7 @@ Running a full Ethereum on your raspberry pi
 
 ### Install Docker
  ```
- sudo apt-get -y install docker
+sudo apt-get install docker.io docker-compose
  ```
  
 ### Connect USB disk
