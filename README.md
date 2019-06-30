@@ -1,5 +1,5 @@
 # EthereumNodePi
-Running a full Ethereum on your raspberry pi 3B+/4
+Running an Ethereum full ndoe on your raspberry pi 3B+/4
 
 ## Buying the required part
 * Raspberry Pi 3B+ — this is the latest full model, which has wifi and bluetooth built in.
