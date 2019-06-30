@@ -15,11 +15,7 @@ Running a full Ethereum on your raspberry pi
  sudo apt-get upgrade
  ```
 
-### Install Docker
- ```
-sudo apt-get install docker.io docker-compose
- ```
- 
+
 ### Connect USB disk
  Format to Ext4 and mount the filesystem
   ```
@@ -49,6 +45,29 @@ Add the following line in the fstab file:
   ```
 UUID=bb72cd58-8477-4639-8214-31d85c7b0c5b /mnt/mydisk ext4 defaults,auto,umask=000,users,rw,nofail 0 0
   ```
+### Install Docker
+ ```
+sudo apt-get install docker.io docker-compose
+ ```
+ 
+Store containers in an external USB drive. Change the following line
+ ```
+sudo vi /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -g /mnt/ethereum-data/ /media/USBdrive/docker -H fd://
+ ```
+
+Reload changes
+ ```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+ ```
+
+You can check that it worked with
+ ```
+sudo docker info | grep Root
+Docker Root Dir: /media/USBdrive/docker
+```
+
 
 
 ### References
