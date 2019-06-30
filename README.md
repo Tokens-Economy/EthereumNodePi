@@ -46,6 +46,13 @@ Add the following line in the fstab file:
 UUID=bb72cd58-8477-4639-8214-31d85c7b0c5b /mnt/mydisk ext4 defaults,auto,umask=000,users,rw,nofail 0 0
   ```
 ### Install Docker
+
+debian buster are not avalable yet but there is a workaround:
+ ```
+curl -sL get.docker.com | sed 's/9)/10)/' | sh
+ ```
+
+due to an issue in containerd used in official package, dont install like this!
  ```
 sudo apt-get install docker.io docker-compose
  ```
