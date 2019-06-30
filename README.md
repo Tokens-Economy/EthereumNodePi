@@ -59,7 +59,9 @@ mv geth-linux-arm7-1.8.27-4bcc0a37/geth /usr/local/bin/geth
 ```
   
 First if we use geth to create a new account.
-$ geth account new
+```
+geth account new
+```
 
 We want ethereum to start at boot time
 ```
@@ -86,9 +88,11 @@ sudo systemctl enable geth@pi.service
 sudo systemctl start geth@pi.service
 ```
 
+Youre done!
+You can now 
 
-
- 
- 
- 
-
+```
+get attach
+admin.peers
+```
+to see the number of peer attached to your node
