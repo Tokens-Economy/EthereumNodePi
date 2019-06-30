@@ -1,4 +1,4 @@
-[https://raw.githubusercontent.com/Tokens-Economy/EthereumNodePi/master/EthereumLoveRaspberryPi.png]
+(https://raw.githubusercontent.com/Tokens-Economy/EthereumNodePi/master/EthereumLoveRaspberryPi.png)
 # EthereumNodePi
 Running an Ethereum light node on your raspberry pi 3B+/4.
 
